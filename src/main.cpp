@@ -46,6 +46,10 @@ int main(int argc, char const *argv[]) {
 		printf("%s %c", item.c_str(), splitToken);
 	}
 
+	if (columnIdx != 0) {
+		printf("\n");
+	}
+
 	puts("--------");
 
 	return 0;
