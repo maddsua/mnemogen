@@ -2,9 +2,9 @@
 	"tasks": {
 		"build:prepare": "deno run -A build/prepare/index.ts",
 		"build:bundle": "deno run -A build/bundle/index.ts",
-		"build": "deno task build:prepare && deno task build:bundle",
-		"install:final": "deno install -n mnemogen dist/bundle.js",
-		"install": "deno task build && deno task install:final",
+		"build:js": "deno task build:prepare && deno task build:bundle",
+		"build:compile": "deno compile --output dist/mnemogen dist/bundle.js",
+		"build": "deno task build:js && deno task build:compile",
 		"run": "deno run src/main.ts --tokens=8 --align=4"
 	}
 }
