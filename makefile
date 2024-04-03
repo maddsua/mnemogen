@@ -3,13 +3,13 @@ CFLAGS			=	-Wall -Werror -std=c++20
 TEMP_DATA_DIR	=	var
 
 BIP39_FILE		=	$(TEMP_DATA_DIR)/bip39.txt
-PIB39_REMOTE	=	https://raw.githubusercontent.com/bitcoin/bips/master/bip-0039/english.txt
+PIB39_REMOTE	=	https://raw.githubusercontent.com/bitcoin/bips/cf0b529e78860fa2d4fe77944091aa98c5e04624/bip-0039/english.txt
 BIP39_BINARY	=	bip39tokens.res
 
 BINRES_TARGET	=	$(if $(filter $(OS),Windows_NT),pe-x86-64,elf64-x86-64)
 
-CLEAN_GLOBS		=	*.o *.exe *.a *.dll *.so *.res
-CLEAN_COMMAND	=	$(if $(filter $(OS),Windows_NT),del /S $(CLEAN_GLOBS),rm -rf $(CLEAN_GLOBS))
+CLEAN_GLOBS		=	*.o *.exe *.a *.dll *.so *.res var
+CLEAN_COMMAND	=	$(if $(filter $(OS),Windows_NT),del /S /F /Q $(CLEAN_GLOBS),rm -rf $(CLEAN_GLOBS))
 
 TEXT_BINS		=	text.help.res
 
