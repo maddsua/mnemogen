@@ -52,4 +52,4 @@ app: $(BUILD_APP_DEPS)
 	g++ -s $(BUILD_APP_DEPS) -static -o mnemogen$(PROGRAM_EXT)
 
 bip39.test: test/bip39.test.cpp bip39tokens.res tokens.o
-	g++ bip39tokens.res tokens.o test/bip39.test.cpp -o bip39.test.exe
+	g++ bip39tokens.res tokens.o test/bip39.test.cpp -o bip39.test$(PROGRAM_EXT)
