@@ -64,7 +64,7 @@ int ArgParser::getArgNumValue(const std::string& key, int fallback_val) {
 	return std::stoi(value);
 }
 
-bool ArgParser::getBooleanFlag(const std::string& key) {
+bool ArgParser::getBoolFlag(const std::string& key) {
 
 	const auto argEntry = "--" + key;
 

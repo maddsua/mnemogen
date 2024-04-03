@@ -6,7 +6,7 @@ int main(int argc, char const *argv[]) {
 
 	ArgParser args(argc, argv);
 
-	if (args.getBooleanFlag("help")) {
+	if (args.getBoolFlag("help") || args.getBoolFlag("version")) {
 		puts(Text::help.c_str());
 		return 0;
 	}

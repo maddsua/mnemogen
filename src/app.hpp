@@ -13,7 +13,7 @@ class ArgParser {
 		ArgParser(int argc, char const *argv[]);
 		std::optional<std::string> getArgValue(const std::string& key);
 		int getArgNumValue(const std::string& key, int fallback_val);
-		bool getBooleanFlag(const std::string& key);
+		bool getBoolFlag(const std::string& key);
 
 };
 
