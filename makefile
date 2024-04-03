@@ -15,7 +15,7 @@ TEXT_BINS		=	text.help.res
 
 BUILD_APP_DEPS	=	$(BIP39_BINARY) $(TEXT_BINS) args.o random.o text.o tokens.o main.o
 
-PROGRAM_FILE	=	$(if $(filter $(OS),Windows_NT),mnemogen.exe,mnemogen)
+PROGRAM_EXT		=	$(if $(filter $(OS),Windows_NT),.exe,)
 
 .PHONY: all all-before all-after action-custom
 all: all-before app all-after
@@ -49,4 +49,7 @@ main.o: src/main.cpp
 	g++ -c $(CFLAGS) src/main.cpp -o main.o
 
 app: $(BUILD_APP_DEPS)
-	g++ -s $(BUILD_APP_DEPS) -static -o $(PROGRAM_FILE)
+	g++ -s $(BUILD_APP_DEPS) -static -o mnemogen$(PROGRAM_EXT)
+
+bip39.test: test/bip39.test.cpp bip39tokens.res tokens.o
+	g++ bip39tokens.res tokens.o test/bip39.test.cpp -o bip39.test.exe
