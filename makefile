@@ -11,7 +11,9 @@ BINRES_TARGET	=	$(if $(filter $(OS),Windows_NT),pe-x86-64,elf64-x86-64)
 CLEAN_GLOBS		=	*.o *.exe *.a *.dll *.so *.res
 CLEAN_COMMAND	=	$(if $(filter $(OS),Windows_NT),del /S $(CLEAN_GLOBS),rm -rf $(CLEAN_GLOBS))
 
-BUILD_APP_DEPS	=	$(BIP39_BINARY) args.o random.o tokens.o main.o
+TEXT_BINS		=	text.help.res
+
+BUILD_APP_DEPS	=	$(BIP39_BINARY) $(TEXT_BINS) args.o random.o text.o tokens.o main.o
 
 PROGRAM_FILE	=	$(if $(filter $(OS),Windows_NT),mnemogen.exe,mnemogen)
 
@@ -28,6 +30,9 @@ $(BIP39_FILE):
 $(BIP39_BINARY): $(BIP39_FILE)
 	objcopy --input-target binary --output-target $(BINRES_TARGET) --binary-architecture i386:x86-64 $(BIP39_FILE) $(BIP39_BINARY)
 
+text.help.res: src/text/help.txt
+	objcopy --input-target binary --output-target $(BINRES_TARGET) --binary-architecture i386:x86-64 src/text/help.txt text.help.res
+
 args.o: src/args.cpp
 	g++ -c $(CFLAGS) src/args.cpp -o args.o
 
@@ -36,6 +41,9 @@ random.o: src/random.cpp
 
 tokens.o: src/tokens.cpp
 	g++ -c $(CFLAGS) src/tokens.cpp -o tokens.o
+
+text.o: src/text.cpp
+	g++ -c $(CFLAGS) src/text.cpp -o text.o
 
 main.o: src/main.cpp
 	g++ -c $(CFLAGS) src/main.cpp -o main.o

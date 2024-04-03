@@ -1,5 +1,5 @@
 #include <random>
-#include "./random.hpp"
+#include "./app.hpp"
 
 std::vector<int> generateRandomSequence(size_t length, int32_t minInt, int32_t maxInt) {
 

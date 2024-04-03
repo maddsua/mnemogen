@@ -1,12 +1,15 @@
 #include <cstdio>
 
-#include "./args.hpp"
-#include "./random.hpp"
-#include "./tokens.hpp"
+#include "./app.hpp"
 
 int main(int argc, char const *argv[]) {
 
 	ArgParser args(argc, argv);
+
+	if (args.getBooleanFlag("help")) {
+		puts(Text::help.c_str());
+		return 0;
+	}
 
 	const auto tokensNumber = args.getArgNumValue("tokens", 8);
 	if (tokensNumber < 4) {

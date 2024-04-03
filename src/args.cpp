@@ -1,4 +1,4 @@
-#include "./args.hpp"
+#include "./app.hpp"
 
 ArgParser::ArgParser(int argc, char const *argv[]) {
 
@@ -62,4 +62,17 @@ int ArgParser::getArgNumValue(const std::string& key, int fallback_val) {
 	}
 
 	return std::stoi(value);
+}
+
+bool ArgParser::getBooleanFlag(const std::string& key) {
+
+	const auto argEntry = "--" + key;
+
+	for (const auto& item : this->m_entries) {
+		if (item == argEntry) {
+			return true;
+		}
+	}
+
+	return false;
 }

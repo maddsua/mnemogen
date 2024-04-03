@@ -1,11 +1,11 @@
-#include "./tokens.hpp"
+#include "./app.hpp"
 
 extern char _binary_var_bip39_txt_start;
 extern char _binary_var_bip39_txt_end;
 
 std::vector<std::string> parseObject();
 
-std::vector<std::string> mnemonicTokens = parseObject();
+const std::vector<std::string> mnemonicTokens = parseObject();
 
 std::vector<std::string> parseObject() {
 
