@@ -13,7 +13,7 @@ const generatedTokens = indexes.map(item => bip39tokens[item]);
 
 const printLines = chunkify(generatedTokens, alighIn).map(item => item.join(' '));
 
-console.log('\nYo here\'s your new mnemonic phrase\n--------');
+console.log('\nYo here\'s your new mnemonic phrase:\n--------');
 
 for (const line of printLines) {
 	console.log(line);
