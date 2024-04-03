@@ -1,4 +1,7 @@
+.vscode
 var/
 dist/
 deno.lock
 *.exe
+*.o
+*.res
