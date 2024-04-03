@@ -49,4 +49,4 @@ main.o: src/main.cpp
 	g++ -c $(CFLAGS) src/main.cpp -o main.o
 
 app: $(BUILD_APP_DEPS)
-	g++ -s $(BUILD_APP_DEPS) -o $(PROGRAM_FILE)
+	g++ -s $(BUILD_APP_DEPS) -static -o $(PROGRAM_FILE)
