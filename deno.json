@@ -1,0 +1,8 @@
+{
+	"tasks": {
+		"build:prepare": "deno run -A build/prepare/index.ts",
+		"build:bundle": "deno run -A build/bundle/index.ts",
+		"build": "deno task build:prepare && deno task build:bundle",
+		"start:dev": "deno run src/main.ts --tokens=8 --align=4"
+	}
+}
